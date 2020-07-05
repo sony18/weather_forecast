@@ -1,0 +1,42 @@
+{
+  "name": "weather_forecast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "homepage": "https://github.com/sony18/weather_forecast.git",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "readable-stream": "^3.5.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gh-pages": "^2.2.0",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-cleanhtml": "^1.0.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-manifest": "^0.1.1",
+    "gulp-minify": "^3.1.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "ie >= 8",
+    "edge >= 15",
+    "ie_mob >= 10",
+    "ff >= 45",
+    "chrome >= 45",
+    "safari >= 7",
+    "opera >= 23",
+    "ios >= 6",
+    "android >= 4",
+    "bb >= 10"
+  ]
+}
