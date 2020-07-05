@@ -8,8 +8,7 @@ const form = document.querySelector('#form-id')
 
 let access_key = 'b47768f911ece4c18943aa8a7e04d87d';
 // end point
-let url = 'http://api.openweathermap.org/data/2.5/'
-
+let url = 'https://api.openweathermap.org/data/2.5/'
 
 //GeoLocation 
 const getLocation =()=>{
@@ -118,7 +117,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                             `<div className="col-sm">
                                  <div class="card  text-blue" style="width: 7rem;">
                                       <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                      <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
+                                      <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
                                       <div class="card-footer">
                                           <small class="card-text ">${item.main.temp}<sup>o</sup>C</small>                                                    
                                       </div>
@@ -134,7 +133,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                                 `<div className="col-sm">
                                      <div class="card  text-blue" style="width: 7rem;">
                                          <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                         <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                         <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                          <div class="card-footer">
                                                  <small class="card-text ">${item.main.temp}<sup>o</sup>C</small>                                                    
                                          </div>
@@ -151,7 +150,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                              `<div className="col-sm">
                                  <div class="card  text-blue" style="width: 7rem;">
                                      <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                     <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                     <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                      <div class="card-footer">
                                              <small class="card-text ">${item.main.temp}<sup>o</sup>C</small>                                                    
                                      </div>
@@ -167,7 +166,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                            `<div className="col-sm">
                                <div class="card  text-blue" style="width: 7rem;">
                                    <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                   <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                   <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                    <div class="card-footer">
                                            <small class="card-text ">${item.main.temp}<sup>o</sup>C</small>                                                    
                                    </div>
@@ -183,7 +182,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                          `<div className="col-sm">
                              <div class="card  text-blue" style="width: 7rem;">
                                  <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                 <img src="http://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                 <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                  <div class="card-footer">
                                          <small class="card-text ">${item.main.temp}<sup>o</sup>C</small>                                                    
                                  </div>
@@ -252,7 +251,7 @@ const displayWeather  = async(temp,feels_like,humidity,sunrise,sunset,descriptio
                             </div>
                             <div class="col-lg-8">
                                 <div classNam="card">
-                                    <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="icon" />
+                                    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="icon" />
                                     <div id="current-temp">${temp} <sup>o</sup>C</div> <br/>
                                     <small> Feels like :  ${feels_like} <sup>o</sup>c ( ${description}.. )</small>
                                 </div>
