@@ -115,7 +115,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                     document.querySelector('#forecast__Day1').innerHTML = ` ${new Date(dayOne[0].dt_txt).toDateString()} (${fivedayData.city.name})`
                     cols += 
                             `<div className="col-sm">
-                                 <div class="card  text-blue" style="width: 7rem;">
+                                 <div class="card  text-blue" >
                                       <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                       <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
                                       <div class="card-footer">
@@ -131,7 +131,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                         document.querySelector('#forecast__Day2').innerHTML = `${new Date(dayTwo[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                         cols2 +=          
                                 `<div className="col-sm">
-                                     <div class="card  text-blue" style="width: 7rem;">
+                                     <div class="card  text-blue" align-center>
                                          <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                          <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                          <div class="card-footer">
@@ -148,7 +148,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                     document.querySelector('#forecast__Day3').innerHTML =   `${new Date(dayThree[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                     cols3 +=          
                              `<div className="col-sm">
-                                 <div class="card  text-blue" style="width: 7rem;">
+                                 <div class="card  text-blue" align-center>
                                      <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                      <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                      <div class="card-footer">
@@ -164,7 +164,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                    document.querySelector('#forecast__Day4').innerHTML = `${new Date(dayFour[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                    cols4 +=          
                            `<div className="col-sm">
-                               <div class="card  text-blue" style="width: 7rem;">
+                               <div class="card  text-blue" align-center>
                                    <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                    <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                    <div class="card-footer">
@@ -180,7 +180,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                  document.querySelector('#forecast__Day5').innerHTML = `${new Date(dayFive[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                  cols5 +=          
                          `<div className="col-sm">
-                             <div class="card  text-blue" style="width: 7rem;">
+                             <div class="card  text-blue" align-center>
                                  <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                  <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
                                  <div class="card-footer">
