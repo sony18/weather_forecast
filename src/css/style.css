@@ -60,3 +60,27 @@ min-height:auto;
     background:rgba(34, 206, 191, 0.8);
     color:white;
 }
+
+#current-temp{
+    font-size: 4rem;
+}
+#current-unit{
+    font-size: 3rem;
+    vertical-align: super;
+}
+#current-unit > sup{
+    font-size: 1rem;
+    vertical-align: super;    
+}
+
+.forecast-unit{
+    font-size: 1rem;  
+}
+
+#feels-like-unit{
+    font-size: 1rem;
+}
+/* superscript */
+sup{
+    font-size: .8rem;
+}
