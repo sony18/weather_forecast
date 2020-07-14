@@ -110,8 +110,6 @@ const getFiveDaysWeather = (fivedayData)=>{
                    count++; //for while condition
                 }   
             // })() 
-console.log(dayOne);
-
             
     //DISPLAY 5DAYS FORECAST.............................       
         let cols='';
@@ -123,7 +121,7 @@ console.log(dayOne);
                                  <div class="card  text-blue" >
                                       <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                       <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
-                                      <div class="card-footer">
+                                      <div class="card-footer footer__fivedays-temp">
                                           <small class="card-text forecast-temp">${dayone_temp}</small><sup> o</sup><span class="forecast-unit">c </span>                                                     
                                       </div>
                                   </div>
@@ -141,7 +139,7 @@ console.log(dayOne);
                                      <div class="card  text-blue" align-center>
                                          <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                          <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
-                                         <div class="card-footer">
+                                         <div class="card-footer footer__fivedays-temp">
                                                  <small class="card-text forecast-temp">${daytwo_temp}</small> <sup>o</sup><span class="forecast-unit">c </span>                                                   
                                          </div>
                                      </div>
@@ -160,8 +158,8 @@ console.log(dayOne);
                                  <div class="card  text-blue" align-center>
                                      <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                      <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
-                                     <div class="card-footer">
-                                             <small class="card-text forecast-temp">${daythree_temp}</small> <sup>o</sup><span class="forecast-unit">c </span>                                                    
+                                     <div class="card-footer footer__fivedays-temp">
+                                             <small class="card-text forecast-temp">${daythree_temp}</small><sup>o</sup><span class="forecast-unit">c </span>                                                    
                                      </div>
                                  </div>
                              </div> `
@@ -178,7 +176,7 @@ console.log(dayOne);
                                <div class="card  text-blue" align-center>
                                    <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                    <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
-                                   <div class="card-footer">
+                                   <div class="card-footer footer__fivedays-temp">
                                            <small class="card-text forecast-temp">${dayfour_temp} </small> <sup>o</sup><span class="forecast-unit">c </span>                                                    
                                    </div>
                                </div>
@@ -196,9 +194,9 @@ console.log(dayOne);
                              <div class="card  text-blue" align-center>
                                  <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                  <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
-                                 <div class="card-footer">
+                                 <div class="card-footer footer__fivedays-temp">
                                          <small id = "day-5" class="card-text forecast-temp">${dayfive_temp}</small> 
-                                         <small> <sup>o</sup></small><span class="forecast-unit">c</span>                                             
+                                         <sup>o</sup><span class="forecast-unit">c</span>                                             
                                  </div>
                              </div>
                          </div> `
@@ -227,6 +225,7 @@ displayWeather(temp,feels_like,humidity,sunrise,sunset,description,icon,deg,spee
      const fetch_City_Current_Weather = async (city='London')=>{
         const reqs = await fetch(`${url}weather?q=${city},uk&units=metric&appid=${access_key}`)
         const cityweather = await reqs.json()
+        console.log(cityweather);
 
         const {humidity,feels_like,temp} = cityweather.main
         const {sunrise,sunset} = cityweather.sys
@@ -251,31 +250,56 @@ displayWeather(temp,feels_like,humidity,sunrise,sunset,description,icon,deg,spee
         
 //func convert temprature in all dom temp
 const convert_All_Temp =(props)=>{
-    // console.log(props);
-    
-let converted_current = convert_Temp(props)
+//Current temp conversion   & DOM display
+let converted_current = convert_Temp(props);
     console.log(converted_current);
+//display  
     document.querySelector('#current-temp').innerHTML = `${converted_current.temp}<a href="#" id ="current-unit" class="text-white title" title="convert temp unit" type="button" onclick="convert_All_Temp({unit:'${converted_current.unit}',temp:${converted_current.temp}})"><sup>o</sup>${converted_current.unit}</a> `
 
+//Feels likke temp conversion & DOM display
 let feels_like_temp = document.querySelector('#feels-like-temp').innerHTML
     feels_like_temp = parseInt(feels_like_temp);//converted dom string value to number
 let feels_like_unit = document.querySelector('#feels-like-unit').innerHTML
 let converted_feels = convert_Temp({unit:feels_like_unit,temp: feels_like_temp})
+//display
     document.querySelector('#feels-like-temp').innerHTML = converted_feels.temp
     document.querySelector('#feels-like-unit').innerHTML = converted_feels.unit
 
+//FIVE DAYS temp conversion & DOM display
+let temp_els = document.querySelectorAll('.forecast-temp')//fivedays temp elements
+let unit_el = document.querySelector('.forecast-unit') //grab a unit element 
+let unit_els = document.querySelectorAll('.forecast-unit')//five days all unit elements
+
+let converted_fiveday = []
+//loop through fivedays temprature element
+    temp_els.forEach(temp_el => {
+                        let temp = parseInt(temp_el.innerHTML)
+                        let unit = unit_el.innerHTML[0].trim();
+                            converted_fiveday.push(convert_Temp({unit,temp}))// convert temp & unit
+                        converted_fiveday.forEach(fiveday=> 
+                                            temp_el.innerHTML = fiveday.temp// display converted temp
+                            )                       
+                        
+                    })
+    unit_els.forEach(unit_el=> {
+                 converted_fiveday.forEach(fiveday=> 
+                                unit_el.innerHTML = fiveday.unit//display converted unit
+                    )
+             })
+
 }
+
 
 //convert temp based on unit 
 // func takes object para
 const convert_Temp =(props)=>{
-    console.log(props);
+    // console.log(props);
     let unit = props.unit.toUpperCase()//unit to lower case
-    if( props.unit === 'C' ){
+    if(unit === 'C' ){
         let temp = 0;
            temp = Math.floor(props.temp *(9/5) + 32)
           return {unit:'F',temp}
-        }else if( props.unit === 'F'){
+        }else if( unit === 'F'){
           let temp = 0;
           temp = Math.floor((props.temp-32) *(5/9))
             return {unit:'C',temp}
@@ -325,14 +349,18 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
 /*=====================================================================================================
     EVENT HANDLER
 =====================================================================================================*/
-document.addEventListener('DOMContentLoaded',getLocation)
-document.addEventListener('DOMContentLoaded',e=>{city__input.focus()})
+const init = ()=>{
 
+    document.addEventListener('DOMContentLoaded',getLocation)
+    document.addEventListener('DOMContentLoaded',e=>{city__input.focus()})
+    
+    
+    form.addEventListener('submit',(e)=>{
+        e.preventDefault()
+        console.log(city__input.value)
+        fetch_City_Current_Weather(city__input.value)
+        fetchGeoData_FiveDays({city:city__input.value})
+    })
+}
 
-form.addEventListener('submit',(e)=>{
-    e.preventDefault()
-    console.log(city__input.value)
-    fetch_City_Current_Weather(city__input.value)
-    fetchGeoData_FiveDays({city:city__input.value})
-})
-
+init();
