@@ -61,13 +61,10 @@ const fetchGeoData_FiveDays = async (props)=>{
   getFiveDaysWeather(data_forecast)
 }
 
-
-
-
-/*===================================================================
+/*=================================================================================
     DESTRUCTURING:  create 5...DAYS variable holding every 3hrs data each day in[]
-    DISPLAY: loop... through each day data and display...
-==================================================================*/
+    DISPLAY 5 Days temp: loop... through each day data and display...
+================================================================================*/
 const getFiveDaysWeather = (fivedayData)=>{  
 
         let dayOne;
@@ -78,8 +75,6 @@ const getFiveDaysWeather = (fivedayData)=>{
         let nextCurrentDate = new Date()  //current Date
         let count = 0; 
         
-        // Self invoked func
-        // const selfCall = (()=>{
             //increment count and nextCurrentDate
             while( count < 5 ){ 
                 switch(count){
@@ -107,9 +102,8 @@ const getFiveDaysWeather = (fivedayData)=>{
                             return ;
                         }
                    nextCurrentDate.setDate(nextCurrentDate.getDate()+1) //to filter data based on current date(next five days..)
-                   count++; //for while condition
+                   count++;
                 }   
-            // })() 
             
     //DISPLAY 5DAYS FORECAST.............................       
         let cols='';
@@ -117,7 +111,7 @@ const getFiveDaysWeather = (fivedayData)=>{
                 let dayone_temp = item.main.temp.toFixed(0)
                     document.querySelector('#forecast__Day1').innerHTML = ` ${new Date(dayOne[0].dt_txt).toDateString()} (${fivedayData.city.name})`
                     cols += 
-                            `<div className="col-sm">
+                            `<div className="col">
                                  <div class="card  text-blue" >
                                       <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
                                       <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
@@ -135,10 +129,10 @@ const getFiveDaysWeather = (fivedayData)=>{
 
                         document.querySelector('#forecast__Day2').innerHTML = `${new Date(dayTwo[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                         cols2 +=          
-                                `<div className="col-sm">
+                                `<div className="col">
                                      <div class="card  text-blue" align-center>
                                          <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                         <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                         <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"   class="img-fluid" alt="icon">
                                          <div class="card-footer footer__fivedays-temp">
                                                  <small class="card-text forecast-temp">${daytwo_temp}</small> <sup>o</sup><span class="forecast-unit">c </span>                                                   
                                          </div>
@@ -154,10 +148,10 @@ const getFiveDaysWeather = (fivedayData)=>{
 
                     document.querySelector('#forecast__Day3').innerHTML =   `${new Date(dayThree[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                     cols3 +=          
-                             `<div className="col-sm">
+                             `<div className="col">
                                  <div class="card  text-blue" align-center>
                                      <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                     <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                     <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
                                      <div class="card-footer footer__fivedays-temp">
                                              <small class="card-text forecast-temp">${daythree_temp}</small><sup>o</sup><span class="forecast-unit">c </span>                                                    
                                      </div>
@@ -172,10 +166,10 @@ const getFiveDaysWeather = (fivedayData)=>{
 
                    document.querySelector('#forecast__Day4').innerHTML = `${new Date(dayFour[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                    cols4 +=          
-                           `<div className="col-sm">
+                           `<div className="col">
                                <div class="card  text-blue" align-center>
                                    <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                   <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                   <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
                                    <div class="card-footer footer__fivedays-temp">
                                            <small class="card-text forecast-temp">${dayfour_temp} </small> <sup>o</sup><span class="forecast-unit">c </span>                                                    
                                    </div>
@@ -190,10 +184,10 @@ const getFiveDaysWeather = (fivedayData)=>{
 
                  document.querySelector('#forecast__Day5').innerHTML = `${new Date(dayFive[0].dt_txt).toDateString()}(${fivedayData.city.name})`
                  cols5 +=          
-                         `<div className="col-sm">
+                         `<div className="col">
                              <div class="card  text-blue" align-center>
                                  <small class="card-header">${new Date(item.dt_txt).toLocaleTimeString()}</small>
-                                 <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  alt="icon">
+                                 <img src="https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png"  class="img-fluid" alt="icon">
                                  <div class="card-footer footer__fivedays-temp">
                                          <small id = "day-5" class="card-text forecast-temp">${dayfive_temp}</small> 
                                          <sup>o</sup><span class="forecast-unit">c</span>                                             
@@ -234,8 +228,9 @@ displayWeather(temp,feels_like,humidity,sunrise,sunset,description,icon,deg,spee
         const {name} = cityweather
         displayWeather(temp,feels_like,humidity,sunrise,sunset,description,icon,deg,speed,name)        
     }
-
-
+/*===================================================================
+ unix time conversion
+==================================================================*/
     function convert_From_UnixTimestamp(unix_timestamp){
         //  pass timestamp(in milliseconds by x1000)in js Date object
         var date = new Date(unix_timestamp * 1000);
@@ -247,8 +242,10 @@ displayWeather(temp,feels_like,humidity,sunrise,sunset,description,icon,deg,spee
         
         return formattedTime
             }
-        
-//func convert temprature in all dom temp
+
+/*===================================================================
+   convert current / 5Days temprature unit 
+==================================================================*/        
 const convert_All_Temp =(props)=>{
 //Current temp conversion   & DOM display
 let converted_current = convert_Temp(props);
@@ -278,7 +275,7 @@ let converted_fiveday = []
                             converted_fiveday.push(convert_Temp({unit,temp}))// convert temp & unit
                         converted_fiveday.forEach(fiveday=> 
                                             temp_el.innerHTML = fiveday.temp// display converted temp
-                            )                       
+                            )                 
                         
                     })
     unit_els.forEach(unit_el=> {
@@ -289,9 +286,10 @@ let converted_fiveday = []
 
 }
 
-
-//convert temp based on unit 
-// func takes object para
+/*===================================================================
+    convert temp based on unit 
+    func takes object para
+==================================================================*/
 const convert_Temp =(props)=>{
     // console.log(props);
     let unit = props.unit.toUpperCase()//unit to lower case
@@ -307,7 +305,7 @@ const convert_Temp =(props)=>{
 
     }
 /*=====================================================================================================
-    DOM .......DISPLAY......... 
+    CURRENT TEMP .......DISPLAY......... 
 =====================================================================================================*/
 const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,description,icon,deg,speed,name)=>{
     let temp = temprature.toFixed(0)
@@ -329,8 +327,8 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
                             </div> 
                             `
     data__ul.innerHTML = `  
-                          <li>humidity : ${humidity} %</li>
-                          <li>wind-direction : ${deg} deg</li>
+                          <li>humidity : ${humidity}%</li>
+                          <li>wind-direction : ${deg}deg</li>
                           <li>wind-speed : ${speed} m/s</li>
                           
                           <marquee class="mt-3" behavior="scroll" direction="up" scrollamount="1">                                    
@@ -339,10 +337,6 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
                           </marquee>
                           `    
                         }
-// const display_FiveDays = ()=>{
-
-// }
-
 
 
 /*=====================================================================================================
