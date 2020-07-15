@@ -254,7 +254,7 @@ const convert_All_Temp =(props)=>{
 let converted_current = convert_Temp(props);
     console.log(converted_current);
 //display  
-    document.querySelector('#current-temp').innerHTML = `${converted_current.temp}<a href="#" id ="current-unit" class="text-white title" title="convert temp unit" type="button" onclick="convert_All_Temp({unit:'${converted_current.unit}',temp:${converted_current.temp}})"><sup>o</sup>${converted_current.unit}</a> `
+    document.querySelector('#current-temp').innerHTML = `${converted_current.temp}<a href="#" id ="current-unit" class="text-white title" title="Toggle temp in F/C" onclick="convert_All_Temp({unit:'${converted_current.unit}',temp:${converted_current.temp}})"><sup>o</sup>${converted_current.unit}</a> `
 
 //Feels likke temp conversion & DOM display
 let feels_like_temp = document.querySelector('#feels-like-temp').innerHTML
