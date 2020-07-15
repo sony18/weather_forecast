@@ -321,8 +321,8 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
                             </div>
                             <div class="col-lg-8">
                                 <div classNam="card">
-                                    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="icon" />
-                                    <div id="current-temp">${temp}<a href="#" id ="current-unit" class="text-white title" title="convert temp unit" type="button" onclick="convert_All_Temp({unit:'C',temp:${temp}})"><sup>o</sup>C</a> </div> <br/>
+                                    <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="icon" class="img-fluid"/>
+                                    <div id="current-temp">${temp}<a href="#" id ="current-unit" class="text-white title" title="Toggle temp in F/C" onclick="convert_All_Temp({unit:'C',temp:${temp}})"><sup>o</sup>C</a> </div> <br/>
                                    Feels Like ... <small id="feels-like-temp"> ${feels_like}</small><small><sup>o</sup></small><span id ="feels-like-unit"  class="text-white">C</span> <br/>   
                                     <small>${description}</small>
                                 </div>
@@ -339,7 +339,6 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
                           </marquee>
                           `    
                         }
-
 // const display_FiveDays = ()=>{
 
 // }
@@ -350,7 +349,6 @@ const displayWeather  = async(temprature,feel_like,humidity,sunrise,sunset,descr
     EVENT HANDLER
 =====================================================================================================*/
 const init = ()=>{
-
     document.addEventListener('DOMContentLoaded',getLocation)
     document.addEventListener('DOMContentLoaded',e=>{city__input.focus()})
     
